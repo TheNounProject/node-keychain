@@ -48,12 +48,6 @@ KeychainAccess.prototype.getPassword = function(opts, fn) {
   fn = fn || noop;
   var err;
 
-  if (process.platform !== 'darwin') {
-    err = new KeychainAccess.errors.UnsupportedPlatformError(null, process.platform);
-    fn(err, null);
-    return;
-  }
-
   if (!opts.account) {
     err = new KeychainAccess.errors.NoAccountProvidedError();
     fn(err, null);
@@ -136,12 +130,6 @@ KeychainAccess.prototype.setPassword = function(opts, fn) {
   fn = fn || noop;
   var err;
 
-  if (process.platform !== 'darwin') {
-    err = new KeychainAccess.errors.UnsupportedPlatformError(null, process.platform);
-    fn(err, null);
-    return;
-  }
-
   if (!opts.account) {
     err = new KeychainAccess.errors.NoAccountProvidedError();
     fn(err, null);
@@ -208,12 +196,6 @@ KeychainAccess.prototype.deletePassword = function(opts, fn) {
   fn = fn || noop;
   var err;
 
-  if (process.platform !== 'darwin') {
-    err = new KeychainAccess.errors.UnsupportedPlatformError(null, process.platform);
-    fn(err, null);
-    return;
-  }
-
   if (!opts.account) {
     err = new KeychainAccess.errors.NoAccountProvidedError();
     fn(err, null);
@@ -259,7 +241,6 @@ function errorClass(code, defaultMsg) {
 }
 
 KeychainAccess.errors = {};
-errorClass('UnsupportedPlatform', 'Expected darwin platform, got: ');
 errorClass('NoAccountProvided', 'An account is required');
 errorClass('NoServiceProvided', 'A service is required');
 errorClass('NoPasswordProvided', 'A password is required');
