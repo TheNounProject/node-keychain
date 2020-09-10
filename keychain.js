@@ -8,7 +8,7 @@
  * Module dependencies.
  */
 
-var spawn = require('child_process').spawn;
+var spawn = require('@skpm/child_process').spawn;
 var noop = function () {};
 
 // Polyfill Buffer.from for Node < 4 that didn't have a #from method
